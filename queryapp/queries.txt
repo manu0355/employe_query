@@ -1,0 +1,27 @@
+from queryapp.models import Company, Languages, Programmer
+
+Company.objects.all()     # to get all company objects
+Languages.objects.all()
+Programmer.objects.all()
+Programmer.objects.all().order_by('p_name')
+Programmer.objects.all()[:5]
+
+#filter
+Programmer.objects.filter(p_name__exact='Ch Manoj Kumar')
+Language.objects.filter(l_name__iexact='python')     # i exact means no casesensitive
+Programmer.objects.filter(age =25)
+Programmer.objects.filter(p_name__startswith = 'C')
+Programmer.objects.filter(age__gte=25)
+Programmer.objects.count()
+
+#get()
+program=Programmer.objects.filter(p_name__iexact='ch manoj kumar').get()
+program
+program.language.all()
+shows manoj Languages
+
+# to get python languages programmers
+lang = Language.objects.filter(l_name__iexact='python').get()
+lang
+lang.programmer_set.all()
+we get all python programmers
